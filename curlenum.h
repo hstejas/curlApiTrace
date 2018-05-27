@@ -1,5 +1,9 @@
 #pragma once
 
+// NOTE: Copied from
+// CURLURL VERSION 7.55.1
+// SOURCE: https://github.com/curl/curl/blob/curl-7_55_1/include/curl/curl.h
+
 #define CURLOPTTYPE_LONG          0
 #define CURLOPTTYPE_OBJECTPOINT   10000
 #define CURLOPTTYPE_STRINGPOINT   10000
@@ -37,7 +41,7 @@ typedef enum {
   CINIT(READDATA, OBJECTPOINT, 9),
 
   /* Buffer to receive error messages in, must be at least CURL_ERROR_SIZE
-   * bytes big. */
+   * bytes big. If this is not used, error messages go to stderr instead: */
   CINIT(ERRORBUFFER, OBJECTPOINT, 10),
 
   /* Function that will be called to store the output (instead of fwrite). The
@@ -757,7 +761,7 @@ typedef enum {
    * Only supported by the c-ares DNS backend */
   CINIT(DNS_LOCAL_IP4, STRINGPOINT, 222),
 
-  /* Set the local IPv6 address to use for outgoing DNS requests.
+  /* Set the local IPv4 address to use for outgoing DNS requests.
    * Only supported by the c-ares DNS backend */
   CINIT(DNS_LOCAL_IP6, STRINGPOINT, 223),
 
@@ -907,31 +911,6 @@ typedef enum {
 
   /* bitmask of allowed auth methods for connections to SOCKS5 proxies */
   CINIT(SOCKS5_AUTH, LONG, 267),
-
-  /* Enable/disable SSH compression */
-  CINIT(SSH_COMPRESSION, LONG, 268),
-
-  /* Post MIME data. */
-  CINIT(MIMEPOST, OBJECTPOINT, 269),
-
-  /* Time to use with the CURLOPT_TIMECONDITION. Specified in number of
-     seconds since 1 Jan 1970. */
-  CINIT(TIMEVALUE_LARGE, OFF_T, 270),
-
-  /* Head start in milliseconds to give happy eyeballs. */
-  CINIT(HAPPY_EYEBALLS_TIMEOUT_MS, LONG, 271),
-
-  /* Function that will be called before a resolver request is made */
-  CINIT(RESOLVER_START_FUNCTION, FUNCTIONPOINT, 272),
-
-  /* User data to pass to the resolver start callback. */
-  CINIT(RESOLVER_START_DATA, OBJECTPOINT, 273),
-
-  /* send HAProxy PROXY protocol header? */
-  CINIT(HAPROXYPROTOCOL, LONG, 274),
-
-  /* shuffle addresses before use when DNS returns multiple */
-  CINIT(DNS_SHUFFLE_ADDRESSES, LONG, 275),
 
   CURLOPT_LASTENTRY /* the last unused */
 } CURLoption;
