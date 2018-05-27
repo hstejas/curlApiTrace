@@ -16,7 +16,7 @@ typedef unsigned int (*Curl_setopt_t)(void* data, unsigned int tag, ...);
 
 CURLcode curl_easy_setopt(CURL* data, CURLoption tag, long parameter)
 {
-    printf("==== curl_easy_setopt(..., ");
+    printf("curl_easy_setopt(%p, ", data);
     printOptName(tag,parameter);
     if(!data)
         return 43;
